@@ -1,0 +1,53 @@
+﻿<Window x:Class="Todo_liste.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Todo_liste"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        
+        
+        
+        <ListBox x:Name="NotesList" Grid.Column="0" Margin="20">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding Udført}"
+                          Checked="CheckBox_Changed"
+                          Unchecked="CheckBox_Changed"
+                          Width="20" Height="20"/>
+
+                        <TextBlock Text="{Binding Opgaver}" Margin="10,0,0,0"/>
+                        <Button Content="Slet" Click="Delete_Click" Margin="10,0,0,0"/>
+                        <Button Content="Rediger" Click="Edit_Click" Margin="10,0,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Column="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+
+            <TextBox x:Name="NoteInput"
+                 Width="150"
+                 Height="30"
+                 Text="Indtast Opgave"
+                 GotFocus="NoteInput_GotFocus"/>
+
+            <Button x:Name="btngem"
+                    Content="Gem Data"
+                    Width="120"
+                    Height="40"
+                    Click="btngem_Click"/>
+           
+        </StackPanel>
+    </Grid>
+</Window>
